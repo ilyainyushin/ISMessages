@@ -266,6 +266,14 @@ static NSMutableArray* currentAlertArray = nil;
     
 }
 
+- (UIImage*)imageNamed:(NSString*)name {
+    NSBundle * pbundle = [NSBundle bundleForClass:[self class]];
+    NSString *bundleURL = [pbundle pathForResource:@"ISMessages" ofType:@"bundle"];
+    NSBundle *imagesBundle = [NSBundle bundleWithPath:bundleURL];
+    UIImage * image = [UIImage imageNamed:name inBundle:imagesBundle compatibleWithTraitCollection:nil];
+    return image;
+}
+
 - (void)configureViewForAlertType:(ISAlertType)alertType iconImage:(UIImage*)iconImage {
     
     self.titleLabelTextColor = [UIColor whiteColor];
@@ -276,28 +284,28 @@ static NSMutableArray* currentAlertArray = nil;
         case ISAlertTypeSucces: {
             self.alertViewBackgroundColor = [UIColor colorWithRed:31.f/255.f green:177.f/255.f blue:138.f/255.f alpha:1.f];
             if (!_iconImage) {
-                self.iconImage = [UIImage imageNamed:@"isSuccessIcon"];
+                self.iconImage = [UIImage imageNamed:[self imageNamed:@"isSuccessIcon"]];
             }
             break;
         }
         case ISAlertTypeError: {
             self.alertViewBackgroundColor = [UIColor colorWithRed:255.f/255.f green:91.f/255.f blue:65.f/255.f alpha:1.f];
             if (!_iconImage) {
-                self.iconImage = [UIImage imageNamed:@"isErrorIcon"];
+                self.iconImage = [UIImage imageNamed:[self imageNamed:@"isErrorIcon"]];
             }
             break;
         }
         case ISAlertTypeWarning: {
             self.alertViewBackgroundColor = [UIColor colorWithRed:255.f/255.f green:134.f/255.f blue:0.f/255.f alpha:1.f];
             if (!_iconImage) {
-                self.iconImage = [UIImage imageNamed:@"isWarningIcon"];
+                self.iconImage = [UIImage imageNamed:[self imageNamed:@"isWarningIcon"]];
             }
             break;
         }
         case ISAlertTypeInfo: {
             self.alertViewBackgroundColor = [UIColor colorWithRed:75.f/255.f green:107.f/255.f blue:122.f/255.f alpha:1.f];
             if (!_iconImage) {
-                self.iconImage = [UIImage imageNamed:@"isInfoIcon"];
+                self.iconImage = [UIImage imageNamed:[self imageNamed:@"isInfoIcon"]];
             }
             break;
         }

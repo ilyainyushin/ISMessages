@@ -19,7 +19,7 @@ Desc..
   s.source_files = 'ISMessages/Classes/**/*'
   
   s.resource_bundles = {
-    'FCAlertView' => ['ISMessages/Assets/*.png']
+    'ISMessages' => ['ISMessages/Assets/*.png']
   }
 
 end

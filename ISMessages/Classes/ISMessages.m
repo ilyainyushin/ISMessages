@@ -66,7 +66,7 @@ static NSMutableArray* currentAlertArray = nil;
         } else {
             self.titleString = title;
         }
-    
+        
         self.messageString = message;
         self.duration = duration;
         self.hideOnTap = hideOnTap;
@@ -93,7 +93,7 @@ static NSMutableArray* currentAlertArray = nil;
     
     self.view.backgroundColor = [UIColor clearColor];
     self.view.frame = CGRectMake((kDefaulInset*2.f)/2.f, -_alertViewHeight, screenWidth - (kDefaulInset*2.f), _alertViewHeight);
- 
+    
     self.view.alpha = 0.7f;
     self.view.layer.cornerRadius = 5.f;
     self.view.layer.masksToBounds = YES;
@@ -175,7 +175,7 @@ static NSMutableArray* currentAlertArray = nil;
                          }];
         
         [currentAlertArray addObject:self];
-    
+        
         [self performSelector:@selector(hide:) withObject:@(NO) afterDelay:_duration];
         
     }
@@ -255,12 +255,12 @@ static NSMutableArray* currentAlertArray = nil;
     paragraphStyle.alignment = NSTextAlignmentLeft;
     
     CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
-
+    
     CGFloat messageHeight = [message boundingRectWithSize:CGSizeMake(screenWidth - 40.f - _iconImageSize.height, CGFLOAT_MAX)
-                                              options:NSStringDrawingUsesLineFragmentOrigin
-                                           attributes:@{NSParagraphStyleAttributeName : paragraphStyle,
-                                                        NSFontAttributeName : [UIFont systemFontOfSize:15.f]}
-                                              context:nil].size.height;
+                                                  options:NSStringDrawingUsesLineFragmentOrigin
+                                               attributes:@{NSParagraphStyleAttributeName : paragraphStyle,
+                                                            NSFontAttributeName : [UIFont systemFontOfSize:15.f]}
+                                                  context:nil].size.height;
     
     return ceilf(messageHeight);
     
@@ -284,28 +284,28 @@ static NSMutableArray* currentAlertArray = nil;
         case ISAlertTypeSuccess: {
             self.alertViewBackgroundColor = [UIColor colorWithRed:31.f/255.f green:177.f/255.f blue:138.f/255.f alpha:1.f];
             if (!_iconImage) {
-                self.iconImage = [UIImage imageNamed:[self imageNamed:@"isSuccessIcon"]];
+                self.iconImage = [self imageNamed:@"isSuccessIcon"];
             }
             break;
         }
         case ISAlertTypeError: {
             self.alertViewBackgroundColor = [UIColor colorWithRed:255.f/255.f green:91.f/255.f blue:65.f/255.f alpha:1.f];
             if (!_iconImage) {
-                self.iconImage = [UIImage imageNamed:[self imageNamed:@"isErrorIcon"]];
+                self.iconImage = [self imageNamed:@"isErrorIcon"];
             }
             break;
         }
         case ISAlertTypeWarning: {
             self.alertViewBackgroundColor = [UIColor colorWithRed:255.f/255.f green:134.f/255.f blue:0.f/255.f alpha:1.f];
             if (!_iconImage) {
-                self.iconImage = [UIImage imageNamed:[self imageNamed:@"isWarningIcon"]];
+                self.iconImage = [self imageNamed:@"isWarningIcon"];
             }
             break;
         }
         case ISAlertTypeInfo: {
             self.alertViewBackgroundColor = [UIColor colorWithRed:75.f/255.f green:107.f/255.f blue:122.f/255.f alpha:1.f];
             if (!_iconImage) {
-                self.iconImage = [UIImage imageNamed:[self imageNamed:@"isInfoIcon"]];
+                self.iconImage = [self imageNamed:@"isInfoIcon"];
             }
             break;
         }

@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 
 typedef NS_ENUM(NSInteger, ISAlertType) {
-    ISAlertTypeSucces = 0, // Green alert view with check mark image
+    ISAlertTypeSuccess = 0, // Green alert view with check mark image
     ISAlertTypeError = 1, // Red alert view with error image
-    ISAlertTypeWarning = 2, // 
-    ISAlertTypeInfo = 3 // Lightgray alert without image, only with title/message
+    ISAlertTypeWarning = 2, // Orange alert view with warning image
+    ISAlertTypeInfo = 3 // Light green alert with info image.
 };
 
 @interface ISMessages : UIViewController
@@ -51,7 +51,7 @@ typedef NS_ENUM(NSInteger, ISAlertType) {
  
  Method is hide alert view
  
- @param BOOL force hide
+ @param NSNumber @(YES/NO) force hide
  
  */
 

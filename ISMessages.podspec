@@ -3,10 +3,6 @@ Pod::Spec.new do |s|
   s.version          = '0.0.1'
   s.summary          = 'ISMessages is a beauty alerts'
 
-  s.description      = <<-DESC
-Desc..
-                       DESC
-
   s.homepage         = 'https://github.com/ilyainyushin/ISMessages'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }

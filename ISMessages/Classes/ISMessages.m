@@ -1,6 +1,6 @@
 //
 //  ISMessages.m
-//  ISMessagesDemo
+//  ISMessages
 //
 //  Created by Ilya Inyushin on 08.09.16.
 //  Copyright © 2016 Ilya Inyushin. All rights reserved.
@@ -242,6 +242,15 @@ static NSMutableArray* currentAlertArray = nil;
         }
     }
     
+}
+
++ (void)hideAlertAnimated:(BOOL)animated {
+    
+    if (currentAlertArray && [currentAlertArray count] != 0) {
+        ISMessages* alert = currentAlertArray[0];
+        [alert hide:[NSNumber numberWithBool:!animated]];
+    }
+
 }
 
 - (CGFloat)preferredHeightForMessageString:(NSString*)message {

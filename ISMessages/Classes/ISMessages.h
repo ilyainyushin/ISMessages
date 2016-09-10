@@ -1,6 +1,6 @@
 //
 //  ISMessages.h
-//  ISMessagesDemo
+//  ISMessages
 //
 //  Created by Ilya Inyushin on 08.09.16.
 //  Copyright © 2016 Ilya Inyushin. All rights reserved.
@@ -9,10 +9,14 @@
 #import <UIKit/UIKit.h>
 
 typedef NS_ENUM(NSInteger, ISAlertType) {
-    ISAlertTypeSuccess = 0, // Green alert view with check mark image
-    ISAlertTypeError = 1, // Red alert view with error image
-    ISAlertTypeWarning = 2, // Orange alert view with warning image
-    ISAlertTypeInfo = 3 // Light green alert with info image.
+    // Green alert view with check mark image.
+    ISAlertTypeSuccess = 0,
+    // Red alert view with error image
+    ISAlertTypeError = 1,
+    // Orange alert view with warning image
+    ISAlertTypeWarning = 2,
+    // Light green alert with info image.
+    ISAlertTypeInfo = 3
 };
 
 @interface ISMessages : UIViewController
@@ -35,7 +39,15 @@ typedef NS_ENUM(NSInteger, ISAlertType) {
 /**
  @author Ilya Inyushin
  
- Desc..
+ Method is show card alert view
+ 
+ @param title Title for alert view
+ @param message Subtitle for alertview, can be empty and nil
+ @param iconImage image for alert. If nil then alert will show with image by alert type
+ @param duration duration after which alert will dismiss
+ @param hideOnSwipe YES/NO for swipe dismiss alert view
+ @param hideOnTap YES/NO for tap dismiss alert view
+ @param type alert type
  */
 
 + (instancetype)showCardAlertWithTitle:(NSString *)title
@@ -51,11 +63,10 @@ typedef NS_ENUM(NSInteger, ISAlertType) {
  
  Method is hide alert view
  
- @param NSNumber @(YES/NO) force hide
- 
+ @param animated @(YES/NO) animated hide
  */
 
-- (void)hide:(NSNumber*)force;
++ (void)hideAlertAnimated:(BOOL)animated;
 
 
 @end

@@ -142,13 +142,13 @@ static NSMutableArray* currentAlertArray = nil;
     [alertView addSubview:messageLabel];
     
     if (_hideOnSwipe) {
-        UISwipeGestureRecognizer* swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(hide:)];
+        UISwipeGestureRecognizer* swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(gestureAction)];
         swipeGesture.direction = UISwipeGestureRecognizerDirectionUp;
         [alertView addGestureRecognizer:swipeGesture];
     }
     
     if (_hideOnTap) {
-        UITapGestureRecognizer* tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hide:)];
+        UITapGestureRecognizer* tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(gestureAction)];
         [alertView addGestureRecognizer:tapGesture];
     }
     
@@ -197,6 +197,10 @@ static NSMutableArray* currentAlertArray = nil;
     } else {
         [self hideInMain];
     }
+}
+
+- (void)gestureAction {
+    [self hide:@(NO)];
 }
 
 #pragma mark - Private Methods

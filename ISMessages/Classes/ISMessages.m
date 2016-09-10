@@ -97,9 +97,18 @@ static NSMutableArray* currentAlertArray = nil;
     self.view.alpha = 0.7f;
     self.view.layer.cornerRadius = 5.f;
     self.view.layer.masksToBounds = YES;
-    
     [self constructAlertCardView];
     
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deviceOrientationDidChange:) name:UIDeviceOrientationDidChangeNotification object:nil];
+    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
+}
+
+- (void)deviceOrientationDidChange:(NSNotification *)notification {
+    [self hide:@(YES)];
 }
 
 - (void)constructAlertCardView {
@@ -133,7 +142,7 @@ static NSMutableArray* currentAlertArray = nil;
     [alertView addSubview:messageLabel];
     
     if (_hideOnSwipe) {
-        UISwipeGestureRecognizer* swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swigeGestureAction:)];
+        UISwipeGestureRecognizer* swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(hide:)];
         swipeGesture.direction = UISwipeGestureRecognizerDirectionUp;
         [alertView addGestureRecognizer:swipeGesture];
     }
@@ -190,16 +199,6 @@ static NSMutableArray* currentAlertArray = nil;
     }
 }
 
-#pragma mark - Gesture Recognizer Methods
-
-- (void)swigeGestureAction:(UISwipeGestureRecognizer*)gesture {
-    
-    if (gesture.direction == UISwipeGestureRecognizerDirectionUp) {
-        [self hideInMain];
-    }
-    
-}
-
 #pragma mark - Private Methods
 
 - (void)hideInMain {
@@ -207,6 +206,7 @@ static NSMutableArray* currentAlertArray = nil;
     if ([currentAlertArray containsObject:self]) {
         @synchronized (currentAlertArray) {
             
+            [NSRunLoop cancelPreviousPerformRequestsWithTarget:self];
             [currentAlertArray removeObject:self];
             
             [UIView animateWithDuration:0.3f animations:^{
@@ -229,7 +229,7 @@ static NSMutableArray* currentAlertArray = nil;
         @synchronized (currentAlertArray) {
             
             ISMessages* activeAlert = currentAlertArray[0];
-            
+            [NSRunLoop cancelPreviousPerformRequestsWithTarget:activeAlert];
             [currentAlertArray removeObject:activeAlert];
             
             [UIView animateWithDuration:0.1f
@@ -324,5 +324,11 @@ static NSMutableArray* currentAlertArray = nil;
     
     
 }
+
+- (void)dealloc {
+    [[UIDevice currentDevice] endGeneratingDeviceOrientationNotifications];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIDeviceOrientationDidChangeNotification object:nil];
+}
+
 
 @end

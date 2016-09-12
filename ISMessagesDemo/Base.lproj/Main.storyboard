@@ -87,7 +87,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Content" footerTitle="ISMessages v 1.0" id="gqC-eo-2Td">
+                            <tableViewSection headerTitle="Content" id="gqC-eo-2Td">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="47" id="ENQ-28-1sY">
                                         <rect key="frame" x="0.0" y="341" width="600" height="47"/>
@@ -139,10 +139,10 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Control" id="70C-pv-meG">
+                            <tableViewSection headerTitle="Control" footerTitle="ISMessages v 1.0.1" id="70C-pv-meG">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="48" id="umr-Ne-aQQ">
-                                        <rect key="frame" x="0.0" y="502" width="600" height="48"/>
+                                        <rect key="frame" x="0.0" y="486" width="600" height="48"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="umr-Ne-aQQ" id="mzs-hN-qIp">
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="47"/>
@@ -157,13 +157,13 @@
                                                         <constraint firstAttribute="width" constant="77" id="gKv-Cu-y1e"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hide Alert" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jp9-SK-ync">
                                                     <rect key="frame" x="8" y="8" width="409" height="31"/>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>

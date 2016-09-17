@@ -1,6 +1,6 @@
 # ISMessages
 
-This is simple extension for presenting system-wide notifications from top of device screen.
+This is simple extension for presenting system-wide notifications from top/bottom of device screen.
 
 <img src="http://i.imgur.com/6auwGhT.gif">
 <img src="http://i.imgur.com/xOE269v.png">
@@ -47,7 +47,8 @@ All messages can simply presented via static method call:
             duration:3.f 
             hideOnSwipe:YES 
             hideOnTap:YES 
-            alertType:ISAlertTypeSuccess];
+            alertType:ISAlertTypeSuccess 
+            alertPosition:ISAlertPositionTop];
 ```
 
 Messages can be displayed from any location in app, even not associated with UI. 

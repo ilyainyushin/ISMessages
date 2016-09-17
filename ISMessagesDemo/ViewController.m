@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UITextField* titleField;
 @property (weak, nonatomic) IBOutlet UITextField* messageField;
 @property (weak, nonatomic) IBOutlet UISwitch *animSwitcher;
+@property (weak, nonatomic) IBOutlet UISwitch *positionSwitcher;
 
 @end
 
@@ -54,9 +55,8 @@
                                           duration:3.f
                                        hideOnSwipe:YES
                                          hideOnTap:YES
-                                         alertType:ISAlertTypeSuccess];
-                
-                
+                                         alertType:ISAlertTypeSuccess
+                                     alertPosition:@(!_positionSwitcher.isOn).integerValue];
             }
             
             if (indexPath.row == 1) {
@@ -66,9 +66,8 @@
                                           duration:3.f
                                        hideOnSwipe:YES
                                          hideOnTap:YES
-                                         alertType:ISAlertTypeError];
-                
-                
+                                         alertType:ISAlertTypeError
+                                     alertPosition:@(!_positionSwitcher.isOn).integerValue];
             }
             
             if (indexPath.row == 2) {
@@ -78,21 +77,20 @@
                                           duration:3.f
                                        hideOnSwipe:YES
                                          hideOnTap:YES
-                                         alertType:ISAlertTypeWarning];
-                
+                                         alertType:ISAlertTypeWarning
+                                     alertPosition:@(!_positionSwitcher.isOn).integerValue];
                 
             }
             
             if (indexPath.row == 3) {
                 [ISMessages showCardAlertWithTitle:_titleField.text
-                                           message:@"This is simple extension for presenting system-wide notifications from top of device screen."
+                                           message:@"This is simple extension for presenting system-wide notifications from top/bottom of device screen."
                                          iconImage:nil
                                           duration:3.f
                                        hideOnSwipe:YES
                                          hideOnTap:YES
-                                         alertType:ISAlertTypeInfo];
-                
-                
+                                         alertType:ISAlertTypeInfo
+                                     alertPosition:@(!_positionSwitcher.isOn).integerValue];
             }
             
             break;

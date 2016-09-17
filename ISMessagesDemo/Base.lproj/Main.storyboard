@@ -139,7 +139,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Control" footerTitle="ISMessages v 1.0.1" id="70C-pv-meG">
+                            <tableViewSection headerTitle="Control" footerTitle="ISMessages v 1.0.2" id="70C-pv-meG">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="48" id="umr-Ne-aQQ">
                                         <rect key="frame" x="0.0" y="486" width="600" height="48"/>
@@ -181,6 +181,46 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="48" id="ObY-ez-fq6">
+                                        <rect key="frame" x="0.0" y="534" width="600" height="48"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ObY-ez-fq6" id="L5x-xO-gkJ">
+                                            <rect key="frame" x="0.0" y="0.0" width="567" height="47"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0U1-DN-UFV">
+                                                    <rect key="frame" x="510" y="8" width="51" height="31"/>
+                                                </switch>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Top:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N8c-sV-taT">
+                                                    <rect key="frame" x="425" y="8" width="77" height="31"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="77" id="Ygc-uS-PQh"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alert position" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zgt-y6-oYX">
+                                                    <rect key="frame" x="8" y="8" width="409" height="31"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="zgt-y6-oYX" firstAttribute="top" secondItem="L5x-xO-gkJ" secondAttribute="topMargin" id="1nT-bg-vDJ"/>
+                                                <constraint firstItem="0U1-DN-UFV" firstAttribute="trailing" secondItem="L5x-xO-gkJ" secondAttribute="trailingMargin" id="29W-xI-hQu"/>
+                                                <constraint firstItem="N8c-sV-taT" firstAttribute="leading" secondItem="zgt-y6-oYX" secondAttribute="trailing" constant="8" id="AbS-uR-mU0"/>
+                                                <constraint firstItem="N8c-sV-taT" firstAttribute="bottom" secondItem="L5x-xO-gkJ" secondAttribute="bottomMargin" id="CH6-FI-Phu"/>
+                                                <constraint firstItem="zgt-y6-oYX" firstAttribute="bottom" secondItem="L5x-xO-gkJ" secondAttribute="bottomMargin" id="JKO-TD-l2Q"/>
+                                                <constraint firstItem="zgt-y6-oYX" firstAttribute="leading" secondItem="L5x-xO-gkJ" secondAttribute="leadingMargin" id="MlS-Ov-J0e"/>
+                                                <constraint firstItem="N8c-sV-taT" firstAttribute="top" secondItem="L5x-xO-gkJ" secondAttribute="topMargin" id="Qa4-1n-itz"/>
+                                                <constraint firstItem="0U1-DN-UFV" firstAttribute="bottom" secondItem="L5x-xO-gkJ" secondAttribute="bottomMargin" id="bst-kF-hET"/>
+                                                <constraint firstItem="0U1-DN-UFV" firstAttribute="leading" secondItem="N8c-sV-taT" secondAttribute="trailing" constant="8" id="ocd-xS-kHK"/>
+                                                <constraint firstItem="0U1-DN-UFV" firstAttribute="top" secondItem="L5x-xO-gkJ" secondAttribute="topMargin" id="zGf-9c-t5J"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -193,6 +233,7 @@
                     <connections>
                         <outlet property="animSwitcher" destination="UCR-Uk-aaH" id="Yup-gh-yzR"/>
                         <outlet property="messageField" destination="IdD-PP-mZg" id="V6X-ys-IPd"/>
+                        <outlet property="positionSwitcher" destination="0U1-DN-UFV" id="Yom-tE-gfv"/>
                         <outlet property="titleField" destination="pde-Rl-fPZ" id="Hg4-Zu-RgN"/>
                     </connections>
                 </tableViewController>

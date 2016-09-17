@@ -19,6 +19,13 @@ typedef NS_ENUM(NSInteger, ISAlertType) {
     ISAlertTypeInfo = 3
 };
 
+typedef NS_ENUM(NSInteger, ISAlertPosition) {
+    // Alert will show from top
+    ISAlertPositionTop = 0,
+    // Alert will show from bottom
+    ISAlertPositionBottom = 1
+};
+
 @interface ISMessages : UIViewController
 
 @property (strong, nonatomic) UIImage* iconImage;
@@ -48,6 +55,7 @@ typedef NS_ENUM(NSInteger, ISAlertType) {
  @param hideOnSwipe YES/NO for swipe dismiss alert view
  @param hideOnTap YES/NO for tap dismiss alert view
  @param type alert type
+ @param position alert position
  */
 
 + (instancetype)showCardAlertWithTitle:(NSString *)title
@@ -56,7 +64,8 @@ typedef NS_ENUM(NSInteger, ISAlertType) {
                               duration:(NSTimeInterval)duration
                            hideOnSwipe:(BOOL)hideOnSwipe
                              hideOnTap:(BOOL)hideOnTap
-                             alertType:(ISAlertType)type;
+                             alertType:(ISAlertType)type
+                         alertPosition:(ISAlertPosition)position;
 
 /**
  @author Ilya Inyushin

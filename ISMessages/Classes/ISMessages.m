@@ -16,6 +16,7 @@ static CGFloat const kTitleLabelHeight = 18.f;
 
 @property (assign, nonatomic) BOOL hideOnSwipe;
 @property (assign, nonatomic) BOOL hideOnTap;
+@property (assign, nonatomic) ISAlertPosition alertPosition;
 
 @end
 
@@ -29,7 +30,8 @@ static NSMutableArray* currentAlertArray = nil;
                               duration:(NSTimeInterval)duration
                            hideOnSwipe:(BOOL)hideOnSwipe
                              hideOnTap:(BOOL)hideOnTap
-                             alertType:(ISAlertType)type {
+                             alertType:(ISAlertType)type
+                         alertPosition:(ISAlertPosition)position {
     
     ISMessages* alert = [[ISMessages alloc] initCardAlertWithTitle:title
                                                            message:message
@@ -37,10 +39,9 @@ static NSMutableArray* currentAlertArray = nil;
                                                           duration:duration
                                                        hideOnSwipe:hideOnSwipe
                                                          hideOnTap:hideOnTap
-                                                         alertType:type];
-    
+                                                         alertType:type
+                                                     alertPosition:position];
     [alert show];
-    
     return alert;
     
 }
@@ -51,7 +52,8 @@ static NSMutableArray* currentAlertArray = nil;
                               duration:(NSTimeInterval)duration
                            hideOnSwipe:(BOOL)hideOnSwipe
                              hideOnTap:(BOOL)hideOnTap
-                             alertType:(ISAlertType)type {
+                             alertType:(ISAlertType)type
+                         alertPosition:(ISAlertPosition)position{
     
     self = [super init];
     
@@ -80,6 +82,8 @@ static NSMutableArray* currentAlertArray = nil;
             self.alertViewHeight = kDefaultCardViewHeight;
         }
         
+        self.alertPosition = position;
+        
     }
     
     return self;
@@ -90,9 +94,15 @@ static NSMutableArray* currentAlertArray = nil;
     [super viewDidLoad];
     
     CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
+    CGFloat screenHeight = [UIScreen mainScreen].bounds.size.height;
+    CGFloat alertYPosition = screenHeight - (_alertViewHeight + screenHeight);
+    
+    if (_alertPosition == ISAlertPositionBottom) {
+        alertYPosition = screenHeight + _alertViewHeight;
+    }
     
     self.view.backgroundColor = [UIColor clearColor];
-    self.view.frame = CGRectMake((kDefaulInset*2.f)/2.f, -_alertViewHeight, screenWidth - (kDefaulInset*2.f), _alertViewHeight);
+    self.view.frame = CGRectMake((kDefaulInset*2.f)/2.f, alertYPosition, screenWidth - (kDefaulInset*2.f), _alertViewHeight);
     
     self.view.alpha = 0.7f;
     self.view.layer.cornerRadius = 5.f;
@@ -143,7 +153,7 @@ static NSMutableArray* currentAlertArray = nil;
     
     if (_hideOnSwipe) {
         UISwipeGestureRecognizer* swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(gestureAction)];
-        swipeGesture.direction = UISwipeGestureRecognizerDirectionUp;
+        swipeGesture.direction = UISwipeGestureRecognizerDirectionUp | UISwipeGestureRecognizerDirectionDown;
         [alertView addGestureRecognizer:swipeGesture];
     }
     
@@ -169,6 +179,12 @@ static NSMutableArray* currentAlertArray = nil;
         [([UIApplication sharedApplication].delegate).window addSubview:self.view];
         
         CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
+        CGFloat screenHeight = [UIScreen mainScreen].bounds.size.height;
+        CGFloat alertYPosition = 20.f;
+        
+        if (_alertPosition == ISAlertPositionBottom) {
+            alertYPosition = screenHeight - _alertViewHeight - 10.f;
+        }
         
         [UIView animateWithDuration:0.5f
                               delay:0.f
@@ -176,10 +192,10 @@ static NSMutableArray* currentAlertArray = nil;
               initialSpringVelocity:0.5f
                             options:UIViewAnimationOptionCurveEaseIn
                          animations:^{
-                             self.view.frame = CGRectMake((kDefaulInset*2.f)/2.f, 20.f, screenWidth - (kDefaulInset*2.f), _alertViewHeight);
+                             self.view.frame = CGRectMake((kDefaulInset*2.f)/2.f, alertYPosition, screenWidth - (kDefaulInset*2.f), _alertViewHeight);
                              self.view.alpha = 1.f;
                          } completion:^(BOOL finished) {
-                             self.view.frame = CGRectMake((kDefaulInset*2.f)/2.f, 20.f, screenWidth - (kDefaulInset*2.f), _alertViewHeight);
+                             self.view.frame = CGRectMake((kDefaulInset*2.f)/2.f, alertYPosition, screenWidth - (kDefaulInset*2.f), _alertViewHeight);
                              self.view.alpha = 1.f;
                          }];
         
@@ -213,12 +229,19 @@ static NSMutableArray* currentAlertArray = nil;
             [NSRunLoop cancelPreviousPerformRequestsWithTarget:self];
             [currentAlertArray removeObject:self];
             
+            CGFloat screenHeight = [UIScreen mainScreen].bounds.size.height;
+            CGFloat alertYPosition = -_alertViewHeight;
+            
+            if (_alertPosition == ISAlertPositionBottom) {
+                alertYPosition = screenHeight;
+            }
+            
             [UIView animateWithDuration:0.3f animations:^{
                 self.view.alpha = 0.7;
-                self.view.frame = CGRectMake((kDefaulInset*2.f)/2.f, -_alertViewHeight, self.view.frame.size.width, self.view.frame.size.height);
+                self.view.frame = CGRectMake((kDefaulInset*2.f)/2.f, alertYPosition, self.view.frame.size.width, self.view.frame.size.height);
             } completion:^(BOOL finished) {
                 self.view.alpha = 0.7;
-                self.view.frame = CGRectMake((kDefaulInset*2.f)/2.f, -_alertViewHeight, self.view.frame.size.width, self.view.frame.size.height);
+                self.view.frame = CGRectMake((kDefaulInset*2.f)/2.f, alertYPosition, self.view.frame.size.width, self.view.frame.size.height);
                 [self.view removeFromSuperview];
             }];
             

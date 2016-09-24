@@ -2,9 +2,9 @@
 
 This is simple extension for presenting system-wide notifications from top/bottom of device screen.
 
-<img src="http://i.imgur.com/6auwGhT.gif">
-<img src="http://i.imgur.com/xOE269v.png">
-<img src="http://i.imgur.com/XAPFIAa.png">
+<img src="http://i.imgur.com/1ToIoTw.gif">
+<img src="http://i.imgur.com/nOsWYyN.png">
+<img src="http://i.imgur.com/CoOPgnw.png">
 
 ## Requirements
 

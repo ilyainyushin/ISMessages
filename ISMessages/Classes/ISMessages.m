@@ -169,7 +169,7 @@ static NSMutableArray* currentAlertArray = nil;
 }
 
 - (void)showInMain {
-    
+        
     if ([currentAlertArray count] != 0) {
         [self performSelectorOnMainThread:@selector(hide:) withObject:@(YES) waitUntilDone:YES];
     }
@@ -180,7 +180,7 @@ static NSMutableArray* currentAlertArray = nil;
         
         CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
         CGFloat screenHeight = [UIScreen mainScreen].bounds.size.height;
-        CGFloat alertYPosition = 20.f;
+        CGFloat alertYPosition = [[UIApplication sharedApplication] statusBarFrame].size.height == 20.f ? [[UIApplication sharedApplication] statusBarFrame].size.height : [[UIApplication sharedApplication] statusBarFrame].size.height + 5.f;
         
         if (_alertPosition == ISAlertPositionBottom) {
             alertYPosition = screenHeight - _alertViewHeight - 10.f;

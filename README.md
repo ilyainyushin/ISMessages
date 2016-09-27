@@ -34,12 +34,12 @@ Add ISMessages folder to your project
 
 
 ##Usage
-
-	#import <ISMessages/ISMessages.h>
-
+```objective-c
+#import <ISMessages/ISMessages.h>
+```
 ###Presenting notification
 
-All messages can simply presented without customization and callback via static method call:
+All messages can simply presented **without** customization and callback via static method call:
 ```objective-c
 [ISMessages showCardAlertWithTitle:@"This is your title!" 
             message:@"This is your message!" 
@@ -50,7 +50,7 @@ All messages can simply presented without customization and callback via static 
             alertType:ISAlertTypeSuccess 
             alertPosition:ISAlertPositionTop];
 ```
-Message with customization and callback:
+Message **with** customization and callback:
 ```objective-c
 ISMessages* alert = [ISMessages cardAlertWithTitle:@"This is custom alert with callback"
                                 message:@"This is your message!!"

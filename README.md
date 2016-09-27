@@ -2,9 +2,9 @@
 
 This is simple extension for presenting system-wide notifications from top/bottom of device screen.
 
-<img src="http://i.imgur.com/1ToIoTw.gif">
-<img src="http://i.imgur.com/nOsWYyN.png">
-<img src="http://i.imgur.com/CoOPgnw.png">
+<img src="http://s20.postimg.org/pl5z3qdx9/ISMessage_Preview.gif">
+<img src="http://s20.postimg.org/usmgug54t/image.png">
+<img src="http://s20.postimg.org/u4dmbi6f1/image.png">
 
 ## Requirements
 
@@ -39,8 +39,8 @@ Add ISMessages folder to your project
 
 ###Presenting notification
 
-All messages can simply presented via static method call:
-```objc
+All messages can simply presented without customization and callback via static method call:
+```objective-c
 [ISMessages showCardAlertWithTitle:@"This is your title!" 
             message:@"This is your message!" 
             iconImage:nil 
@@ -50,13 +50,39 @@ All messages can simply presented via static method call:
             alertType:ISAlertTypeSuccess 
             alertPosition:ISAlertPositionTop];
 ```
+Message with customization and callback:
+```objective-c
+ISMessages* alert = [ISMessages cardAlertWithTitle:@"This is custom alert with callback"
+                                message:@"This is your message!!"
+                                iconImage:nil
+                                duration:3.f
+                                hideOnSwipe:YES
+                                hideOnTap:YES
+                                alertType:ISAlertTypeCustom
+                                alertPosition:ISAlertPositionTop];
+				
+alert.titleLabelFont = [UIFont boldSystemFontOfSize:15.f];
+alert.titleLabelTextColor = [UIColor blackColor];
+
+alert.messageLabelFont = [UIFont italicSystemFontOfSize:13.f];
+alert.messageLabelTextColor = [UIColor whiteColor];
+
+alert.alertViewBackgroundColor = [UIColor colorWithRed:96.f/255.f 
+					  green:184.f/255.f 
+					  blue:237.f/255.f 
+					  alpha:1.f];
+
+[alert show:^{
+    NSLog(@"Callback is working!");
+}];				
+```
 
 Messages can be displayed from any location in app, even not associated with UI. 
 
 ###Hiding Messages
 
 Notifications will hidden automatically after your duration or using static method
-```objc
+```objective-c
 [ISMessages hideAlertAnimated:YES];
 ```
 Also you can just tap/swipe {on} message to hide it.

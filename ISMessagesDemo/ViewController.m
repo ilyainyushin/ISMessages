@@ -57,6 +57,7 @@
                                          hideOnTap:YES
                                          alertType:ISAlertTypeSuccess
                                      alertPosition:@(!_positionSwitcher.isOn).integerValue];
+                
             }
             
             if (indexPath.row == 1) {
@@ -91,6 +92,34 @@
                                          hideOnTap:YES
                                          alertType:ISAlertTypeInfo
                                      alertPosition:@(!_positionSwitcher.isOn).integerValue];
+            }
+            
+            if (indexPath.row == 4) {
+                ISMessages* alert = [ISMessages cardAlertWithTitle:@"This is custom alert with callback"
+                                                           message:@"This is custom alert with custom fonts, font colors, background color"
+                                                         iconImage:nil
+                                                          duration:3.f
+                                                       hideOnSwipe:YES
+                                                         hideOnTap:YES
+                                                         alertType:ISAlertTypeCustom
+                                                     alertPosition:@(!_positionSwitcher.isOn).integerValue];
+                
+                alert.titleLabelFont = [UIFont boldSystemFontOfSize:15.f];
+                alert.titleLabelTextColor = [UIColor blackColor];
+                
+                alert.messageLabelFont = [UIFont italicSystemFontOfSize:13.f];
+                alert.messageLabelTextColor = [UIColor whiteColor];
+                
+                alert.alertViewBackgroundColor = [UIColor colorWithRed:96.f/255.f green:184.f/255.f blue:237.f/255.f alpha:1.f];
+                
+                [alert show:^{
+                    UIAlertController* alertController = [UIAlertController alertControllerWithTitle:@"GOOD"
+                                                                                             message:@"CallBack is working!"
+                                                                                      preferredStyle:UIAlertControllerStyleAlert];
+                    [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+                    [self presentViewController:alertController animated:YES completion:nil];
+                }];
+                
             }
             
             break;

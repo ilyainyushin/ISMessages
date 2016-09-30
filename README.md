@@ -1,4 +1,7 @@
 # ISMessages
+[![Version](https://img.shields.io/github/release/ilyainyushin/ISMessages.svg)](https://github.com/ilyainyushin/ISMessages/releases/latest/)
+[![CocoaPods](https://img.shields.io/cocoapods/v/ISMessages.svg)](https://cocoapods.org/pods/ISMessages)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/ilyainyushin/ISMessages/master/LICENSE)
 
 This is simple extension for presenting system-wide notifications from top/bottom of device screen.
 

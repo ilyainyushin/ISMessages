@@ -93,7 +93,9 @@ Also you can just tap/swipe {on} message to hide it.
 ##Author
 Ilya Inyushin
 
-<a href="mailto:trsaltn@yandex.ru">trsaltn@yandex.ru</a>
+- <a href="mailto:trsaltn@yandex.ru">trsaltn@yandex.ru</a>
+- <a href="http://twitter.com/trsaltn">Twitter</a>
+- <a href="http://github.com/ilyainyushin">GitHub</a>
 
 ## License
 

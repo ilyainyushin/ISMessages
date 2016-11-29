@@ -51,7 +51,6 @@
             if (indexPath.row == 0) {
                 [ISMessages showCardAlertWithTitle:_titleField.text
                                            message:_messageField.text
-                                         iconImage:nil
                                           duration:3.f
                                        hideOnSwipe:YES
                                          hideOnTap:YES
@@ -63,7 +62,6 @@
             if (indexPath.row == 1) {
                 [ISMessages showCardAlertWithTitle:_titleField.text
                                            message:_messageField.text
-                                         iconImage:nil
                                           duration:3.f
                                        hideOnSwipe:YES
                                          hideOnTap:YES
@@ -74,7 +72,6 @@
             if (indexPath.row == 2) {
                 [ISMessages showCardAlertWithTitle:_titleField.text
                                            message:_messageField.text
-                                         iconImage:nil
                                           duration:3.f
                                        hideOnSwipe:YES
                                          hideOnTap:YES
@@ -86,7 +83,6 @@
             if (indexPath.row == 3) {
                 [ISMessages showCardAlertWithTitle:_titleField.text
                                            message:@"This is simple extension for presenting system-wide notifications from top/bottom of device screen."
-                                         iconImage:nil
                                           duration:3.f
                                        hideOnSwipe:YES
                                          hideOnTap:YES
@@ -96,8 +92,8 @@
             
             if (indexPath.row == 4) {
                 ISMessages* alert = [ISMessages cardAlertWithTitle:@"This is custom alert with callback"
-                                                           message:@"This is custom alert with custom fonts, font colors, background color"
-                                                         iconImage:nil
+                                                           message:@"This is custom alert with custom image, fonts, font colors, background color"
+                                                         iconImage:[UIImage imageNamed:@"Icon-40"]
                                                           duration:3.f
                                                        hideOnSwipe:YES
                                                          hideOnTap:YES
@@ -119,6 +115,28 @@
                     [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
                     [self presentViewController:alertController animated:YES completion:nil];
                 }];
+                
+            }
+            
+            if (indexPath.row == 5) {
+                ISMessages* alert = [ISMessages cardAlertWithTitle:@"This is custom alert without callback"
+                                                           message:@"This is custom alert withoud image and with custom fonts, font colors, background color"
+                                                         iconImage:nil
+                                                          duration:3.f
+                                                       hideOnSwipe:YES
+                                                         hideOnTap:YES
+                                                         alertType:ISAlertTypeCustom
+                                                     alertPosition:@(!_positionSwitcher.isOn).integerValue];
+                
+                alert.titleLabelFont = [UIFont boldSystemFontOfSize:15.f];
+                alert.titleLabelTextColor = [UIColor blackColor];
+                
+                alert.messageLabelFont = [UIFont italicSystemFontOfSize:13.f];
+                alert.messageLabelTextColor = [UIColor whiteColor];
+                
+                alert.alertViewBackgroundColor = [UIColor colorWithRed:96.f/255.f green:184.f/255.f blue:237.f/255.f alpha:1.f];
+                
+                [alert show:nil];
                 
             }
             

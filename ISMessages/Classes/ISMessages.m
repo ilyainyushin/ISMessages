@@ -50,7 +50,6 @@ static NSMutableArray* currentAlertArray = nil;
 
 + (instancetype)showCardAlertWithTitle:(NSString *)title
                                message:(NSString *)message
-                             iconImage:(UIImage *)iconImage
                               duration:(NSTimeInterval)duration
                            hideOnSwipe:(BOOL)hideOnSwipe
                              hideOnTap:(BOOL)hideOnTap
@@ -59,7 +58,7 @@ static NSMutableArray* currentAlertArray = nil;
     
     ISMessages* alert = [[ISMessages alloc] initCardAlertWithTitle:title
                                                            message:message
-                                                         iconImage:iconImage
+                                                         iconImage:nil
                                                           duration:duration
                                                        hideOnSwipe:hideOnSwipe
                                                          hideOnTap:hideOnTap
@@ -113,8 +112,8 @@ static NSMutableArray* currentAlertArray = nil;
         self.duration = duration;
         self.hideOnTap = hideOnTap;
         self.hideOnSwipe = hideOnSwipe;
-        self.iconImageSize = CGSizeMake(35.f, 35.f);
         [self configureViewForAlertType:type iconImage:iconImage];
+        self.iconImageSize = _iconImage == nil ? CGSizeZero : CGSizeMake(35.f, 35.f);
         self.alertPosition = position;
        
     }
@@ -259,11 +258,19 @@ static NSMutableArray* currentAlertArray = nil;
 }
 
 - (void)hide:(NSNumber*)force {
-    if (force.boolValue == YES) {
-        [self forceHideInMain];
-    } else {
-        [self hideInMain];
+    
+    NSTimeInterval delayDuration = 0.f;
+    
+    if (self.view.layer.animationKeys) {
+        delayDuration = 0.5f;
     }
+    
+    if (force.boolValue == YES) {
+        [self performSelector:@selector(forceHideInMain) withObject:nil afterDelay:delayDuration];
+    } else {
+        [self performSelector:@selector(hideInMain) withObject:nil afterDelay:delayDuration];
+    }
+    
 }
 
 - (void)gestureAction {
@@ -430,9 +437,6 @@ static NSMutableArray* currentAlertArray = nil;
         }
         case ISAlertTypeCustom: {
             self.alertViewBackgroundColor = [UIColor colorWithRed:96.f/255.f green:184.f/255.f blue:237.f/255.f alpha:1.f];
-            if (!_iconImage) {
-                self.iconImage = [self imageNamed:@"isInfoIcon"];
-            }
             break;
         }
         default:

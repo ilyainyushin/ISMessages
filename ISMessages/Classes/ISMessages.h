@@ -47,7 +47,6 @@ typedef NS_ENUM(NSInteger, ISAlertPosition) {
  
  @param title Title for alert view
  @param message Subtitle for alertview, can be empty and nil
- @param iconImage image for alert. If nil then alert will show with image by alert type
  @param duration duration after which alert will dismiss
  @param hideOnSwipe YES/NO for swipe dismiss alert view
  @param hideOnTap YES/NO for tap dismiss alert view
@@ -57,7 +56,6 @@ typedef NS_ENUM(NSInteger, ISAlertPosition) {
 
 + (instancetype)showCardAlertWithTitle:(NSString *)title
                                message:(NSString *)message
-                             iconImage:(UIImage *)iconImage
                               duration:(NSTimeInterval)duration
                            hideOnSwipe:(BOOL)hideOnSwipe
                              hideOnTap:(BOOL)hideOnTap

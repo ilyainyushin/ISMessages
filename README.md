@@ -42,7 +42,7 @@ Add ISMessages folder to your project
 ```
 ###Presenting notification
 
-All messages can simply presented **without** customization and callback via static method call:
+All messages can simply presented **without** customization and callback action via static method call:
 ```objective-c
 [ISMessages showCardAlertWithTitle:@"This is your title!" 
             message:@"This is your message!" 
@@ -51,9 +51,12 @@ All messages can simply presented **without** customization and callback via sta
             hideOnSwipe:YES 
             hideOnTap:YES 
             alertType:ISAlertTypeSuccess 
-            alertPosition:ISAlertPositionTop];
+            alertPosition:ISAlertPositionTop 
+	    	didHide:^(BOOL finished) {
+               NSLog(@"Alert did hide.");
+            }];
 ```
-Message **with** customization and callback:
+Message **with** customization and callback action:
 ```objective-c
 ISMessages* alert = [ISMessages cardAlertWithTitle:@"This is custom alert with callback"
                                 message:@"This is your message!!"
@@ -76,7 +79,9 @@ alert.alertViewBackgroundColor = [UIColor colorWithRed:96.f/255.f
 					  alpha:1.f];
 
 [alert show:^{
-    NSLog(@"Callback is working!");
+     NSLog(@"Callback is working!");
+} didHide:^(BOOL finished) {
+     NSLog(@"Custom alert without image did hide.");
 }];				
 ```
 

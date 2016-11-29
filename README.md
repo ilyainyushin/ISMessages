@@ -45,8 +45,7 @@ Add ISMessages folder to your project
 All messages can simply presented **without** customization and callback action via static method call:
 ```objective-c
 [ISMessages showCardAlertWithTitle:@"This is your title!" 
-            message:@"This is your message!" 
-            iconImage:nil 
+            message:@"This is your message!"  
             duration:3.f 
             hideOnSwipe:YES 
             hideOnTap:YES 
@@ -60,7 +59,7 @@ Message **with** customization and callback action:
 ```objective-c
 ISMessages* alert = [ISMessages cardAlertWithTitle:@"This is custom alert with callback"
                                 message:@"This is your message!!"
-                                iconImage:nil
+                                iconImage:[UIImage imageNamed:@"Icon-40"]
                                 duration:3.f
                                 hideOnSwipe:YES
                                 hideOnTap:YES

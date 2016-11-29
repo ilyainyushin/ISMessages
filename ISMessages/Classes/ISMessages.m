@@ -275,7 +275,7 @@ static NSMutableArray* currentAlertArray = nil;
     }
     
     if (force.boolValue == YES) {
-        [self performSelector:@selector(forceHideInMain) withObject:nil afterDelay:delayDuration];
+        [self performSelector:@selector(forceHideInMain) withObject:nil afterDelay:0.f];
     } else {
         [self performSelector:@selector(hideInMain) withObject:nil afterDelay:delayDuration];
     }
@@ -317,9 +317,6 @@ static NSMutableArray* currentAlertArray = nil;
                 self.view.alpha = 0.7;
                 self.view.frame = CGRectMake((kDefaulInset*2.f)/2.f, alertYPosition, self.view.frame.size.width, self.view.frame.size.height);
                 [self.view removeFromSuperview];
-                if (_completion) {
-                    _completion(YES);
-                }
             }];
             
         }
@@ -341,9 +338,7 @@ static NSMutableArray* currentAlertArray = nil;
                                  activeAlert.view.alpha = 0.f;
                              } completion:^(BOOL finished) {
                                  [activeAlert.view removeFromSuperview];
-                                 if (_completion) {
-                                     _completion(YES);
-                                 }
+                                 [activeAlert removeFromParentViewController];
                              }];
             
         }
@@ -464,6 +459,9 @@ static NSMutableArray* currentAlertArray = nil;
 - (void)dealloc {
     [[UIDevice currentDevice] endGeneratingDeviceOrientationNotifications];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIDeviceOrientationDidChangeNotification object:nil];
+    if (_completion) {
+        _completion(YES);
+    }
 }
 
 

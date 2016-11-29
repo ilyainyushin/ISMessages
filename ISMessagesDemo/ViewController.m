@@ -55,7 +55,8 @@
                                        hideOnSwipe:YES
                                          hideOnTap:YES
                                          alertType:ISAlertTypeSuccess
-                                     alertPosition:@(!_positionSwitcher.isOn).integerValue];
+                                     alertPosition:@(!_positionSwitcher.isOn).integerValue
+                                           didHide:nil];
                 
             }
             
@@ -66,7 +67,8 @@
                                        hideOnSwipe:YES
                                          hideOnTap:YES
                                          alertType:ISAlertTypeError
-                                     alertPosition:@(!_positionSwitcher.isOn).integerValue];
+                                     alertPosition:@(!_positionSwitcher.isOn).integerValue
+                                           didHide:nil];
             }
             
             if (indexPath.row == 2) {
@@ -76,7 +78,8 @@
                                        hideOnSwipe:YES
                                          hideOnTap:YES
                                          alertType:ISAlertTypeWarning
-                                     alertPosition:@(!_positionSwitcher.isOn).integerValue];
+                                     alertPosition:@(!_positionSwitcher.isOn).integerValue
+                                           didHide:nil];
                 
             }
             
@@ -87,7 +90,11 @@
                                        hideOnSwipe:YES
                                          hideOnTap:YES
                                          alertType:ISAlertTypeInfo
-                                     alertPosition:@(!_positionSwitcher.isOn).integerValue];
+                                     alertPosition:@(!_positionSwitcher.isOn).integerValue
+                                           didHide:^(BOOL finished) {
+                                               NSLog(@"Alert did hide.");
+                                           }];
+                
             }
             
             if (indexPath.row == 4) {
@@ -114,7 +121,7 @@
                                                                                       preferredStyle:UIAlertControllerStyleAlert];
                     [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
                     [self presentViewController:alertController animated:YES completion:nil];
-                }];
+                } didHide:nil];
                 
             }
             
@@ -136,7 +143,9 @@
                 
                 alert.alertViewBackgroundColor = [UIColor colorWithRed:96.f/255.f green:184.f/255.f blue:237.f/255.f alpha:1.f];
                 
-                [alert show:nil];
+                [alert show:nil didHide:^(BOOL finished) {
+                    NSLog(@"Custom alert without image did hide.");
+                }];
                 
             }
             

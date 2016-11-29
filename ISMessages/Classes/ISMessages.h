@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-// Callback block
+// Callback blocks
 typedef void(^handler)(void);
+typedef void(^completion)(BOOL finished);
 
 typedef NS_ENUM(NSInteger, ISAlertType) {
     // Green alert view with check mark image.
@@ -52,6 +53,7 @@ typedef NS_ENUM(NSInteger, ISAlertPosition) {
  @param hideOnTap YES/NO for tap dismiss alert view
  @param type alert type
  @param position alert position
+ @param didHide completion block when notification did hide.
  */
 
 + (instancetype)showCardAlertWithTitle:(NSString *)title
@@ -60,7 +62,8 @@ typedef NS_ENUM(NSInteger, ISAlertPosition) {
                            hideOnSwipe:(BOOL)hideOnSwipe
                              hideOnTap:(BOOL)hideOnTap
                              alertType:(ISAlertType)type
-                         alertPosition:(ISAlertPosition)position;
+                         alertPosition:(ISAlertPosition)position
+                               didHide:(completion)didHide;
 
 /**
  @author Ilya Inyushin
@@ -92,7 +95,7 @@ typedef NS_ENUM(NSInteger, ISAlertPosition) {
  handler is callback block
  */
 
-- (void)show:(handler)handler;
+- (void)show:(handler)handler didHide:(completion)didHide;
 
 /**
  @author Ilya Inyushin

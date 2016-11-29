@@ -38,9 +38,10 @@ static CGFloat const kDefaulInset = 8.f;
 @property (assign, nonatomic) CGFloat alertViewHeight;
 @property (assign, nonatomic) CGSize iconImageSize;
 
-// callback
+// callbacks
 
 @property handler handler;
+@property completion completion;
 
 @end
 
@@ -54,7 +55,8 @@ static NSMutableArray* currentAlertArray = nil;
                            hideOnSwipe:(BOOL)hideOnSwipe
                              hideOnTap:(BOOL)hideOnTap
                              alertType:(ISAlertType)type
-                         alertPosition:(ISAlertPosition)position {
+                         alertPosition:(ISAlertPosition)position
+                               didHide:(completion)didHide {
     
     ISMessages* alert = [[ISMessages alloc] initCardAlertWithTitle:title
                                                            message:message
@@ -64,7 +66,9 @@ static NSMutableArray* currentAlertArray = nil;
                                                          hideOnTap:hideOnTap
                                                          alertType:type
                                                      alertPosition:position];
-    [alert show:nil];
+    
+    [alert show:nil didHide:didHide];
+    
     return alert;
     
 }
@@ -206,7 +210,7 @@ static NSMutableArray* currentAlertArray = nil;
     
 }
 
-- (void)show:(handler)handler {
+- (void)show:(handler)handler didHide:(completion)didHide {
     
     if (handler) {
         _handler = handler;
@@ -214,7 +218,12 @@ static NSMutableArray* currentAlertArray = nil;
         [self.view addGestureRecognizer:tapGesture];
     }
     
+    if (didHide) {
+        _completion = didHide;
+    }
+    
     [self performSelectorOnMainThread:@selector(showInMain) withObject:nil waitUntilDone:NO];
+    
 }
 
 - (void)showInMain {
@@ -308,6 +317,9 @@ static NSMutableArray* currentAlertArray = nil;
                 self.view.alpha = 0.7;
                 self.view.frame = CGRectMake((kDefaulInset*2.f)/2.f, alertYPosition, self.view.frame.size.width, self.view.frame.size.height);
                 [self.view removeFromSuperview];
+                if (_completion) {
+                    _completion(YES);
+                }
             }];
             
         }
@@ -329,6 +341,9 @@ static NSMutableArray* currentAlertArray = nil;
                                  activeAlert.view.alpha = 0.f;
                              } completion:^(BOOL finished) {
                                  [activeAlert.view removeFromSuperview];
+                                 if (_completion) {
+                                     _completion(YES);
+                                 }
                              }];
             
         }

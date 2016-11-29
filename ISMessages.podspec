@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'ISMessages'
-  s.version          = '1.1'
+  s.version          = '1.2'
   s.summary          = 'This is simple extension for presenting system-wide notifications from top/bottom of device screen.'
 
   s.homepage         = 'https://github.com/ilyainyushin/ISMessages'

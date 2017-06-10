@@ -5,9 +5,8 @@
 
 This is simple extension for presenting system-wide notifications from top/bottom of device screen.
 
-<img src="http://s20.postimg.org/pl5z3qdx9/ISMessage_Preview.gif">
-<img src="http://s20.postimg.org/usmgug54t/image.png">
-<img src="http://s20.postimg.org/u4dmbi6f1/image.png">
+<img src="http://s20.postimg.org/pl5z3qdx9/ISMessage_Preview.gif"><img src="http://s20.postimg.org/usmgug54t/image.png"><img src="http://s20.postimg.org/u4dmbi6f1/image.png">
+
 
 ## Requirements
 

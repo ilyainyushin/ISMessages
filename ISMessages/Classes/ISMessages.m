@@ -243,6 +243,12 @@ static NSMutableArray* currentAlertArray = nil;
         if (_alertPosition == ISAlertPositionBottom) {
             alertYPosition = screenHeight - _alertViewHeight - 10.f;
         }
+      
+        //iPhone X safe area offset
+        if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone &&
+            UIScreen.mainScreen.nativeBounds.size.height == 2436)  {
+            alertYPosition += (_alertPosition == ISAlertPositionBottom) ? -30.f : 30.f;;
+        }
         
         [UIView animateWithDuration:0.5f
                               delay:0.f

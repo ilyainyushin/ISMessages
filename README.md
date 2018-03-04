@@ -35,11 +35,11 @@ Then run `pod install`.
 Add ISMessages folder to your project 
 
 
-##Usage
+### Usage
 ```objective-c
 #import <ISMessages/ISMessages.h>
 ```
-###Presenting notification
+### Presenting notification
 
 All messages can simply presented **without** customization and callback action via static method call:
 ```objective-c
@@ -85,7 +85,7 @@ alert.alertViewBackgroundColor = [UIColor colorWithRed:96.f/255.f
 
 Messages can be displayed from any location in app, even not associated with UI. 
 
-###Hiding Messages
+### Hiding Messages
 
 Notifications will hidden automatically after your duration or using static method
 ```objective-c
@@ -93,7 +93,7 @@ Notifications will hidden automatically after your duration or using static meth
 ```
 Also you can just tap/swipe {on} message to hide it.
 
-##Author
+## Author
 Ilya Inyushin
 
 - <a href="mailto:trsaltn@yandex.ru">trsaltn@yandex.ru</a>

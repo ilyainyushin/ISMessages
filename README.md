@@ -12,7 +12,7 @@
 
 ## Requirements
 
-- Requires iOS 8 or later
+- Requires iOS 8.2 or later
 - Requires Automatic Reference Counting (ARC)
 
 ##Features

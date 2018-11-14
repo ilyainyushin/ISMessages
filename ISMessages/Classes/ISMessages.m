@@ -144,6 +144,13 @@ static NSMutableArray* currentAlertArray = nil;
     
     if (_alertPosition == ISAlertPositionBottom) {
         alertYPosition = screenHeight + _alertViewHeight;
+        if (@available(iOS 11.0, *)) {
+            UIEdgeInsets safeArea = ([UIApplication sharedApplication].delegate).window.safeAreaInsets;
+            
+            if (safeArea.bottom > 0 ) {
+                alertYPosition = alertYPosition - safeArea.bottom;
+            }
+        }
     }
     
     self.view.backgroundColor = [UIColor clearColor];
@@ -242,12 +249,13 @@ static NSMutableArray* currentAlertArray = nil;
         
         if (_alertPosition == ISAlertPositionBottom) {
             alertYPosition = screenHeight - _alertViewHeight - 10.f;
-        }
-      
-        //iPhone X safe area offset
-        if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone &&
-            UIScreen.mainScreen.nativeBounds.size.height == 2436)  {
-            alertYPosition += (_alertPosition == ISAlertPositionBottom) ? -30.f : 30.f;;
+            if (@available(iOS 11.0, *)) {
+                UIEdgeInsets safeArea = ([UIApplication sharedApplication].delegate).window.safeAreaInsets;
+                
+                if (safeArea.bottom > 0 ) {
+                    alertYPosition = alertYPosition - safeArea.bottom;
+                }
+            }
         }
         
         [UIView animateWithDuration:0.5f

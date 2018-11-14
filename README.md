@@ -15,7 +15,7 @@
 - Requires iOS 8.2 or later
 - Requires Automatic Reference Counting (ARC)
 
-##Features
+## Features
 
 - Simple use actions
 - Call from anywhere in app

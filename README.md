@@ -3,9 +3,11 @@
 [![CocoaPods](https://img.shields.io/cocoapods/v/ISMessages.svg)](https://cocoapods.org/pods/ISMessages)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/ilyainyushin/ISMessages/master/LICENSE)
 
-This is simple extension for presenting system-wide notifications from top/bottom of device screen.
+<p align="center">This is simple extension for presenting system-wide notifications from top/bottom of device screen.</p>
 
-<img src="https://i.imgur.com/EJn2r0u.png"><img src="https://i.imgur.com/EbSHVOL.png"><img src="https://i.imgur.com/F3d875B.png">
+<p align="center"> 
+<img src="https://i.imgur.com/EJn2r0u.png"><img src="https://i.imgur.com/EbSHVOL.png">
+</p>
 
 
 ## Requirements

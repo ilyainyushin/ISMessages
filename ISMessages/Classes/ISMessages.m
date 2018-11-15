@@ -264,10 +264,10 @@ static NSMutableArray* currentAlertArray = nil;
               initialSpringVelocity:0.5f
                             options:UIViewAnimationOptionCurveEaseIn
                          animations:^{
-                             self.view.frame = CGRectMake((kDefaulInset*2.f)/2.f, alertYPosition, screenWidth - (kDefaulInset*2.f), _alertViewHeight);
+                             self.view.frame = CGRectMake((kDefaulInset*2.f)/2.f, alertYPosition, screenWidth - (kDefaulInset*2.f), self->_alertViewHeight);
                              self.view.alpha = 1.f;
                          } completion:^(BOOL finished) {
-                             self.view.frame = CGRectMake((kDefaulInset*2.f)/2.f, alertYPosition, screenWidth - (kDefaulInset*2.f), _alertViewHeight);
+                             self.view.frame = CGRectMake((kDefaulInset*2.f)/2.f, alertYPosition, screenWidth - (kDefaulInset*2.f), self->_alertViewHeight);
                              self.view.alpha = 1.f;
                          }];
         

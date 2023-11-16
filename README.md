@@ -96,10 +96,9 @@ Notifications will hidden automatically after your duration or using static meth
 Also you can just tap/swipe {on} message to hide it.
 
 ## Author
-Ilya Inyushin
+Ilia
 
-- <a href="mailto:ilia@iniushin.ru">ilia@iniushin.ru</a>
-- <a href="http://twitter.com/trsaltn">Twitter</a>
+- <a href="mailto:ilia@iniushin.ru">ilia@iniushin.com</a>
 - <a href="http://github.com/ilyainyushin">GitHub</a>
 
 ## License
